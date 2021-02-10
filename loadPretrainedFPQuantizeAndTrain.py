@@ -1,6 +1,5 @@
 '''CIFAR10 with PyTorch.'''
 ''' Load a pretrained FP network state from a checkpoint. Quantize the network, train it with a subset of hyperparameters (batch size, lr, weight decay, optimizer) and save the best network states. The quantized network saved states is 1/4 the size of the FP one. '''
-from __future__ import print_function
 import argparse
 import torch
 import torch.nn as nn
@@ -19,7 +18,7 @@ import logging
 from models.quantization import *
 
 
-_logger = logging.getLogger("cifar10_pytorch_automl")
+_logger = logging.getLogger("cifar10_pytorch")
 
 trainloader = None
 testloader = None
@@ -158,7 +157,7 @@ def test(save_checkpoint):
         if not os.path.isdir('checkpoint'):
             os.mkdir('checkpoint')
 
-        print('Saving the network using jit')
+        print('Saving the quantized network using jit')
         net=net.cpu()
         net.eval()
         net_int8 = torch.quantization.convert(net)
@@ -206,8 +205,9 @@ if __name__ == '__main__':
         _logger.debug(args)
         
         prepare(args)
-        acc = 0.0
+        acc = test(args.save_checkpoint)
         best_acc = 0.0
+        print('Initial accuracy: ',acc)
         for epoch in range(start_epoch, start_epoch+args.epochs):
             train(epoch, args.batches)
             acc, best_acc = test(args.save_checkpoint)

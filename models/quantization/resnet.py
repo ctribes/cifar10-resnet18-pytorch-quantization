@@ -146,30 +146,6 @@ def _resnet(arch, block, layers, pretrained, pretrained_checkpoint, num_classes,
             checkpoint = torch.load(pretrained_checkpoint)
             model.load_state_dict(checkpoint)
         
-
-#    if pretrained:
-#        if quantize:
-#            model_url = quant_model_urls[arch + '_' + backend]
-#        else:
-#            model_url = model_urls[arch]
-#
-#        state_dict = load_state_dict_from_url(model_url,
-#                                              progress=progress)
-#
-#        model.load_state_dict(state_dict)
-        
-#        if pretrained and no:
-#            state_dict = load_state_dict_from_url(model_urls[arch],
-#                                                  progress=progress)
-#            model.load_state_dict(state_dict)
-#        elif pretrained and localCheckPoint:
-#            checkpoint = torch.load('checkpoint/ckpt.t7')
-#            model.load_state_dict(checkpoint)
-      
-    # model.eval()
-    #model=model.to('cpu')
-    #model_int8 = torch.quantization.convert(model)
-    # print(model)
     return model
 
 

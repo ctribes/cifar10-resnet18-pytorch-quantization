@@ -1,6 +1,5 @@
 '''CIFAR10 with PyTorch.'''
 ''' Load a pretrained FP network state from a checkpoint. Quantize the network, test and save the quantized network state (1/4 the size of the FP one). '''
-from __future__ import print_function
 import argparse
 import torch
 import torch.nn as nn
@@ -108,7 +107,7 @@ if __name__ == '__main__':
     
         print('acc=',test())
         
-        print('Saving using jit')
+        print('Saving quantized network using jit')
         net=net.cpu()
         net.eval()
         net_int8 = torch.quantization.convert(net)

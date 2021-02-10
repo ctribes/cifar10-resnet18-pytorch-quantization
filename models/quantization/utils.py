@@ -28,16 +28,10 @@ def quantize_model(model, backend):
             activation=torch.quantization.default_observer,
             weight=torch.quantization.default_per_channel_weight_observer)
     elif backend == 'qnnpack':
-        print("QNNpack ")
+
         model.qconfig = torch.quantization.get_default_qat_qconfig('qnnpack')
-#        model.qconfig = torch.quantization.QConfig(
-#            activation=torch.quantization.default_observer,
-#            weight=torch.quantization.default_weight_observer)
 
     model.fuse_model()
-    # torch.quantization.prepare(model, inplace=True)
     torch.quantization.prepare_qat(model, inplace=True)
-    # model(_dummy_input_data)
-    # torch.quantization.convert(model, inplace=True)
 
     return
