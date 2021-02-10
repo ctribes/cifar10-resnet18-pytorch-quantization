@@ -1,4 +1,5 @@
-'''Test load state CIFAR10 with PyTorch.'''
+'''CIFAR10 with PyTorch.'''
+''' Load a pretrained FP network state from a checkpoint. Quantize the network, train it with a subset of hyperparameters (batch size, lr, weight decay, optimizer) and save the best network states. The quantized network saved states is 1/4 the size of the FP one. '''
 from __future__ import print_function
 import argparse
 import torch
@@ -193,7 +194,7 @@ if __name__ == '__main__':
     parser.add_argument('--weight_decay', type=float, default=0.00000001)
     
     # Checkpoint file
-    parser.add_argument('--pretrained_checkpoint', default='./checkpoint/resnet18-cifar10.pth')
+    parser.add_argument('--pretrained_checkpoint', default='./checkpoint/resnet18-cifar10-fp.pth')
 
     # Checkpoint file
     parser.add_argument('--save_checkpoint', default='./checkpoint/resnet18-cifar10-int8.pth')

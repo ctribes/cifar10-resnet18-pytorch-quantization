@@ -1,4 +1,5 @@
-'''Test load state CIFAR10 with PyTorch.'''
+'''CIFAR10 with PyTorch.'''
+''' Load a pretrained FP network state from a checkpoint. Quantize the network, test and save the quantized network state (1/4 the size of the FP one). '''
 from __future__ import print_function
 import argparse
 import torch
@@ -18,7 +19,7 @@ import logging
 from models.quantization import *
 
 
-_logger = logging.getLogger("cifar10_pytorch_automl")
+_logger = logging.getLogger("cifar10_pytorch")
 
 trainloader = None
 testloader = None
@@ -95,7 +96,7 @@ if __name__ == '__main__':
     parser.add_argument('--batch_size', type=int, default=256)
     
     # Checkpoint file
-    parser.add_argument('--pretrained_checkpoint', default='./checkpoint/resnet18-cifar10.pth')
+    parser.add_argument('--pretrained_checkpoint', default='./checkpoint/resnet18-cifar10-fp.pth')
 
     args, _ = parser.parse_known_args()
     
@@ -116,7 +117,7 @@ if __name__ == '__main__':
         example_forward_input=example_forward_input.cpu()
 
         net_trace = torch.jit.trace(net_int8,example_forward_input)
-        torch.jit.save(net_trace,'./checkpoint/resnet18-cifar10_int8.pt')
+        torch.jit.save(net_trace,'./checkpoint/resnet18-cifar10-int8.pt')
         
     except Exception as exception:
         _logger.exception(exception)
