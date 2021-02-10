@@ -26,7 +26,8 @@ The ResNet18 from https://github.com/pytorch/vision/tree/master/torchvision/mode
 
 * The objective is to find the values of hyperparameters that maximize the network accuracy.
 
-* Nomad takes a parameter file as input to describe the optimization problem and the other Nomad setting. 
+* Nomad takes a parameter file as input to describe the optimization problem and the other Nomad setting. To launch the optimization, enter
+  $path_to_nomad_bin/nomad param.txt
 
 * For quantized network, only four (4) hyperparameters are considered: the choice of optimizer (in ["SGD", "Adadelta", "Adagrad", "Adam", "Adamax"], handled as an integer), weight decay of the neural network optimization (in [0, 0.00000001, 0.0000001, 0.000001], handled as an integer), the learning rate (in [10-4, 10-1] as a log uniform) and the batch size (in [32, 64, 128, 256], handled as an integer).
 
