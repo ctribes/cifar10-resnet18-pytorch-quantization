@@ -180,7 +180,9 @@ def resnet18(pretrained=False, pretrained_checkpoint='./checkpoint/resnet18_cifa
 
     Args:
         pretrained (bool): If True, returns a model pre-trained on ImageNet
-        progress (bool): If True, displays a progress bar of the download to stderr
+        pretrained_checkpoint (str): File name containing the network pretrained state.
+        num_classes (int): The number of classes.
+        quantize (bool): If True, perform quantization.
     """
     return _resnet('resnet18', QuantizableBasicBlock, [2, 2, 2, 2], pretrained, pretrained_checkpoint, num_classes,
                    quantize, **kwargs)

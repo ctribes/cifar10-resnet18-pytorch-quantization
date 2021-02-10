@@ -154,7 +154,7 @@ class ResNet(nn.Module):
         self,
         block: Type[Union[BasicBlock, Bottleneck]],
         layers: List[int],
-        num_classes: int,
+        num_classes: int, # add the number of classes as an argument (original 100)
         zero_init_residual: bool = False,
         groups: int = 1,
         width_per_group: int = 64,
@@ -178,11 +178,13 @@ class ResNet(nn.Module):
                              "or a 3-element tuple, got {}".format(replace_stride_with_dilation))
         self.groups = groups
         self.base_width = width_per_group
+        # Modified for cifar10 (32x32)
         # self.conv1 = nn.Conv2d(3, self.inplanes, kernel_size=7, stride=2, padding=3, bias=False) # original works for imageNet
         self.conv1 = nn.Conv2d(3, self.inplanes, kernel_size=3, stride=1, padding=1, bias=False)
         self.bn1 = norm_layer(self.inplanes)
         self.relu = nn.ReLU(inplace=True)
-        # self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1) # CT original works for imageNet
+        # Modified for cifar10
+        # self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1) # original works for imageNet
         self.layer1 = self._make_layer(block, 64, layers[0])
         self.layer2 = self._make_layer(block, 128, layers[1], stride=2,
                                        dilate=replace_stride_with_dilation[0])
@@ -281,7 +283,8 @@ def resnet18(pretrained: bool = False , pretrained_checkpoint: str = './checkpoi
 
     Args:
         pretrained (bool): If True, returns a model pre-trained on ImageNet
-        progress (bool): If True, displays a progress bar of the download to stderr
+        pretrained_checkpoint (str): The name of the pretrained network state file
+        num_classes (int): The number of classes.
     """
     return _resnet('resnet18', BasicBlock, [2, 2, 2, 2], pretrained , pretrained_checkpoint, num_classes, **kwargs)
 
