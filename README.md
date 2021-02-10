@@ -22,7 +22,7 @@ The ResNet18 from https://github.com/pytorch/vision/tree/master/torchvision/mode
 
 ### Optimization
 
-* Hyperparameters tuning using Nomad optimizer from https://github.com/orgs/bbopt/teams/nomad. Nomad is a C++ code and requires building. 
+* Hyperparameters tuning using Nomad 4 optimizer from https://github.com/orgs/bbopt/teams/nomad. Nomad 4 is a C++ code and requires building. 
 
 * The objective is to find the values of hyperparameters that maximize the network accuracy.
 
@@ -32,4 +32,9 @@ The ResNet18 from https://github.com/pytorch/vision/tree/master/torchvision/mode
 
 * Before lauchning blackbox evaluation, the variables handled by Nomad are converted in the hyperparameters space (bb.py).
 
-* Nomad can launch several parallel evaluations on different GPUs. The eval.py manages the execution of the bb.py on each available GPU (list must be provided by user)
+* Nomad launches a single evaluations on given GPU (see eval.py)
+
+* Nomad can launch several parallel evaluations on different GPUs (see evalP.py). The evalP.py manages the execution of the bb.py on each available GPU (list must be provided by user). To use this option, the param.txt file must be changed: 
+  BB_EXE "$python evalP.py"
+  GENERATE_ALL_POINTS_BEFORE_EVAL yes
+  NB_THREADS_OPENMP 4
