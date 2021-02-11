@@ -5,15 +5,15 @@ DIMENSION 4
 #3    "lr":{"_type":"choice", "uniform":[-4, -1]},
 #4     "optimizer":{"_type":"choice", "_value":["SGD", "Adadelta", "Adagrad", "Adam", "Adamax"]}
 X0 (3 3 -2 2 )
-LOWER_BOUND (1 1 -4 1 )
+LOWER_BOUND (3 1 -4 1 )
 UPPER_BOUND (4 4 -1 5 )
 
 BB_OUTPUT_TYPE OBJ
-MAX_BB_EVAL 100
+MAX_BB_EVAL 50
 
 BB_EXE "$python evalP.py"
 GENERATE_ALL_POINTS_BEFORE_EVAL yes
-NB_THREADS_OPENMP 4
+NB_THREADS_OPENMP 2
 
 BB_INPUT_TYPE (I I R I)
 

@@ -6,7 +6,7 @@ import os
 #logging.basicConfig(level=logging.DEBUG,
 #                    format='(%(threadName)-9s) %(message)s',)
 
-gpuList = [0,1,2,3]
+gpuList = [1,3]
 bbExe = "python bb.py"
 logAllFile = "logAllOutputs.txt"
 

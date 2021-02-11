@@ -270,13 +270,13 @@ def bb(X):
                 return 1
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--epochs", type=int, default=200)
+    parser.add_argument("--epochs", type=int, default=100)
 
     # Maximum mini-batches per epoch, for code testing purpose
     parser.add_argument("--batches", type=int, default=-1)
     
     # Checkpoint file
-    parser.add_argument('--pretrained_checkpoint', default='./checkpoint/resnet18-cifar10.pth')
+    parser.add_argument('--pretrained_checkpoint', default='./checkpoint/resnet18-cifar10-fp.pth')
 
     # Checkpoint file
     parser.add_argument('--save_checkpoint', default='./checkpoint/resnet18-cifar10-int8.pth')
