@@ -5,6 +5,9 @@
 ### Goal
 Tests neural network hyperparameters optimization (HPO) on cifar10 with quantized ResNet18 network from a full precision state.
 
+### Test
+Tested with pytorch 1.6.0 and Python 3.8.3
+
 ### ResNet18
 The ResNet18 from https://github.com/pytorch/vision/tree/master/torchvision/models has been modified to work with 10 classes, 32x32 images of Cifar10.
 
