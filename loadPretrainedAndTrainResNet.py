@@ -1,5 +1,5 @@
-'''CIFAR10 with PyTorch.'''
-''' Load a pretrained full precision network state from a checkpoint and train for a given number of epochs (save best states).'''
+#'''CIFAR10 with PyTorch.'''
+#''' Load a pretrained full precision network state from a checkpoint and train for a given number of epochs (save best states).'''
 from __future__ import print_function
 import argparse
 import torch
