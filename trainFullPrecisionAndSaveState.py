@@ -1,5 +1,5 @@
-'''CIFAR10 with PyTorch.'''
-'''From a predefined set of hyperparameters train a full precision ResNet18 on Cifar10. Save the network state for later.'''
+#'''CIFAR10 with PyTorch.'''
+#'''From a predefined set of hyperparameters train a full precision ResNet18 on Cifar10. Save the network state for later.'''
 from __future__ import print_function
 import argparse
 import torch
