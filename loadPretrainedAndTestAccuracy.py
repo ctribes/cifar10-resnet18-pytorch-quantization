@@ -1,5 +1,5 @@
-'''CIFAR10 with PyTorch.'''
-'''Load a pretrained ResNet18 network state from a checkpoint and test the accuracy. '''
+#'''CIFAR10 with PyTorch.'''
+#'''Load a pretrained ResNet18 network state from a checkpoint and test the accuracy. '''
 from __future__ import print_function
 import argparse
 import torch
