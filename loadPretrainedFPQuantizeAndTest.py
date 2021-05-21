@@ -1,5 +1,5 @@
-'''CIFAR10 with PyTorch.'''
-''' Load a pretrained FP network state from a checkpoint. Quantize the network, test and save the quantized network state (1/4 the size of the FP one). '''
+#'''CIFAR10 with PyTorch.'''
+#''' Load a pretrained FP network state from a checkpoint. Quantize the network, test and save the quantized network state (1/4 the size of the FP one). '''
 import argparse
 import torch
 import torch.nn as nn
