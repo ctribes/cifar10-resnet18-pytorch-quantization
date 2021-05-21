@@ -1,5 +1,5 @@
-'''CIFAR10 with PyTorch.'''
-''' Load a pretrained FP network state from a checkpoint. Quantize the network, train it with a subset of hyperparameters (batch size, lr, weight decay, optimizer) and save the best network states. The quantized network saved states is 1/4 the size of the FP one. '''
+#'''CIFAR10 with PyTorch.'''
+#''' Load a pretrained FP network state from a checkpoint. Quantize the network, train it with a subset of hyperparameters (batch size, lr, weight decay, optimizer) and save the best network states. The quantized network saved states is 1/4 the size of the FP one. '''
 import argparse
 import torch
 import torch.nn as nn
