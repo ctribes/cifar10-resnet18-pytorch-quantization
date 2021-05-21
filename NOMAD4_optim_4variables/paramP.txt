@@ -1,0 +1,24 @@
+DIMENSION 4
+
+#1    "batch_size": {"_type":"choice", "_value": [32, 64, 128, 256]},
+#2    "weight_decay": {"_type":"choice", "_value": [0, 0.00000001,  0.0000001, 0.000001]},
+#3    "lr":{"_type":"choice", "uniform":[-4, -1]},
+#4     "optimizer":{"_type":"choice", "_value":["SGD", "Adadelta", "Adagrad", "Adam", "Adamax"]}
+X0 (3 3 -2 2 )
+LOWER_BOUND (3 1 -4 1 )
+UPPER_BOUND (4 4 -1 5 )
+
+BB_OUTPUT_TYPE OBJ
+MAX_BB_EVAL 50
+
+BB_EXE "$python evalP.py"
+GENERATE_ALL_POINTS_BEFORE_EVAL yes
+NB_THREADS_OPENMP 2
+
+BB_INPUT_TYPE (I I R I)
+
+HISTORY_FILE history.txt 
+DISPLAY_ALL_EVAL yes
+
+STATS_FILE stats.txt BBE ( SOL ) OBJ
+

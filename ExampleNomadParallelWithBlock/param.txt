@@ -1,0 +1,32 @@
+DIMENSION 6
+
+#1    "batch_size": {"_type":"choice", "_value": [32, 64, 128, 256]},
+#2    "weight_decay": {"_type":"choice", "_value": [0, 0,00004,  0.0004, 0.004, 0.04]},
+#3    "dropout_rate": {"_type":"uniform","_value":[0.05, 0.55]},
+#4    "lr":{"_type":"choice", "uniform":[-4, -1]},
+#5    "initialization_method":{"_type":"choice", "_value":["normal","orthogonal","xavier_uniform","xavier_normal","kaiming_uniform","kaiming_normal"]},
+#6     "optimizer":{"_type":"choice", "_value":["SGD", "Adadelta", "Adagrad", "Adam", "Adamax"]}
+X0 ( 3 4 0.5 -3 6 1 )
+LOWER_BOUND (1 1 0.05 -4 1 1 )
+UPPER_BOUND (4 5 0.55 -1 6 5 ]
+
+BB_OUTPUT_TYPE OBJ
+MAX_BB_EVAL 100
+# Special for intensification
+LH_SEARCH 16
+OPPORTUNISTIC_LH no
+BB_MAX_BLOCK_SIZE 16
+MAX_EVAL_INTENSIFICATION 8
+DIRECTION_TYPE ORTHO 2N
+
+
+BB_EXE "$python blockEval.py"
+
+BB_INPUT_TYPE (I I R R I I)
+
+HISTORY_FILE history.txt 
+DISPLAY_ALL_EVAL yes
+
+
+STATS_FILE stats.txt BBE ( SOL ) OBJ
+
